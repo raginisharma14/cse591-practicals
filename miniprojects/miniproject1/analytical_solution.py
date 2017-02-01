@@ -20,7 +20,9 @@ class regressor(object):
         self.x = np.concatenate((np.ones((self.x.shape[0],1)), self.x), axis = 1)
         self.w = np.dot(inverse(np.dot(self.x.transpose,self.x)),np.dot(self.x.transpose,self.y))
 
-        self.b = self.x[1,] # First row is just b 
+        #self.b = self.x[1,] # First row is just b 
+        # shouldn't it be like below?
+        self.b = self.w[:1]
         self.w = self.w[1:] # w is all but the first row.
 
     def get_params (self):
